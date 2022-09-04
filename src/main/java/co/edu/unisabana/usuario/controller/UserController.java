@@ -12,58 +12,38 @@ import java.util.List;
 
 @RestController
 public class UserController {
-    //APRENDAR A FORMATEAR EL CODIGO
+
+  @GetMapping("/hello")
+  public String greeting() {
+    return "Hola Mundo";
+  }
 
 
-    @GetMapping("/hello")
-    public String greeting() {
-        return "Hola Mundo";
-    }
+  @GetMapping(value = "/data")
+  public UserDTO dataUser() {
+    return new UserDTO("d", "s", 1);
+  }
 
-    //@PathVariable long id
+  @GetMapping(value = "/data/{variable}/{otroDato}")
+  public UserDTO dataUserWithPathVarible(@PathVariable String variable,
+      @PathVariable String otroDato) {
+    return new UserDTO(variable, "s", 1);
+  }
 
+  @GetMapping("/search")
+  public List<UserDTO> datos(@RequestParam String q) {
+    List<UserDTO> lista = new ArrayList<>();
+    lista.add(new UserDTO("Richard", "a", 20));
+    lista.add(new UserDTO("Jhonatan", "a", 21));
+    lista.add(new UserDTO("laura", "Espitia", 19));
+    lista.add(new UserDTO("laura", "Piraneque", 19));
 
-    @GetMapping(value = "/data")
-    public UserDTO dataUser() {
-        return new UserDTO("d", "s", 1);
-    }
-
-    @GetMapping(value = "/data/{variable}/{otroDato}")
-    public UserDTO dataUserWithPathVarible(@PathVariable String variable,
-                                           @PathVariable String otroDato) {
-        return new UserDTO(variable, "s", 1);
-    }
-
-    @GetMapping("/search")
-    public List<UserDTO> datos(@RequestParam String q) {
-        List<UserDTO> lista = new ArrayList<>();
-        lista.add(new UserDTO("Richard", "a", 20));
-        lista.add(new UserDTO("Jhonatan", "a", 21));
-        lista.add(new UserDTO("laura", "Espitia", 19));
-        lista.add(new UserDTO("laura", "Piraneque", 19));
-
-        List<UserDTO> resultados = new ArrayList<>();
-        lista.forEach(dato -> {
-            if (dato.getName().contains(q)) {
-                resultados.add(dato);
-            }
-        });
-        return resultados;
-    }
-
-    /*?= Query param / Request Param
-    /{variable}/   = Path variable
-    paginaloquesea.com/usuario/DANIEL/datos?=muchos
-    */
-    /*
-        Vamos a construir un CRUD del tema que quieran
-        POST (insertar, actualizar), GET (consultar)
-        DELETE (eliminar)
-        Debe almacenar los registros en un array estatico
-        Debe tener una regla de negocio para insertar registros
-        (UNICA)
-        DEBE APRENDER A MENEJAR LOS CODIGOS DE RESPUESTA HTTP
-
-     */
-
+    List<UserDTO> resultados = new ArrayList<>();
+    lista.forEach(dato -> {
+      if (dato.getName().contains(q)) {
+        resultados.add(dato);
+      }
+    });
+    return resultados;
+  }
 }
