@@ -2,6 +2,7 @@ package co.edu.unisabana.usuario.controller;
 
 
 import co.edu.unisabana.usuario.dto.UserDTO;
+import co.edu.unisabana.usuario.dto.UserDTOResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,7 @@ public class UserController {
   }
 
   @GetMapping("/search")
-  public List<UserDTO> datos(@RequestParam String q) {
+  public UserDTOResponse datos(@RequestParam String q) {
     List<UserDTO> lista = new ArrayList<>();
     lista.add(new UserDTO("Richard", "a", 20));
     lista.add(new UserDTO("Jhonatan", "a", 21));
@@ -44,6 +45,6 @@ public class UserController {
         resultados.add(dato);
       }
     });
-    return resultados;
+    return new UserDTOResponse(resultados);
   }
 }
