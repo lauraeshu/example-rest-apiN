@@ -1,4 +1,4 @@
-package co.edu.unisabana.usuario.service.port;
+package co.edu.unisabana.usuario.service.user.port;
 
 import co.edu.unisabana.usuario.service.model.User;
 

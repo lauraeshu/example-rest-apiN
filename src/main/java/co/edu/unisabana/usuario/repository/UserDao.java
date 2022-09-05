@@ -1,7 +1,7 @@
 package co.edu.unisabana.usuario.repository;
 
 import co.edu.unisabana.usuario.service.model.User;
-import co.edu.unisabana.usuario.service.port.RegisterUserPort;
+import co.edu.unisabana.usuario.service.user.port.RegisterUserPort;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,7 +1,8 @@
 package co.edu.unisabana.usuario.service;
 
 import co.edu.unisabana.usuario.service.model.User;
-import co.edu.unisabana.usuario.service.port.RegisterUserPort;
+import co.edu.unisabana.usuario.service.user.port.RegisterUserPort;
+import co.edu.unisabana.usuario.service.user.RegisterUserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
