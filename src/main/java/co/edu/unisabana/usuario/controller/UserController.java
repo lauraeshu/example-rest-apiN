@@ -22,7 +22,7 @@ public class UserController {
 
   @GetMapping(value = "/data")
   public UserDTO dataUser() {
-    return new UserDTO("d", "s", 1);
+    return new UserDTO("d", "s", 20);
   }
 
   @GetMapping(value = "/data/{variable}/{otroDato}")
@@ -36,8 +36,9 @@ public class UserController {
     List<UserDTO> lista = new ArrayList<>();
     lista.add(new UserDTO("Richard", "a", 20));
     lista.add(new UserDTO("Jhonatan", "a", 21));
-    lista.add(new UserDTO("laura", "Espitia", 19));
+
     lista.add(new UserDTO("laura", "Piraneque", 19));
+
 
     List<UserDTO> resultados = new ArrayList<>();
     lista.forEach(dato -> {
