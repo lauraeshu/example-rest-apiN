@@ -1,15 +1,15 @@
 package co.edu.unisabana.usuario.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import co.edu.unisabana.usuario.AbstractTest;
 import co.edu.unisabana.usuario.dto.UserDTO;
 import co.edu.unisabana.usuario.dto.UserDTOResponse;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UsuarioControllerTest extends AbstractTest {
 
