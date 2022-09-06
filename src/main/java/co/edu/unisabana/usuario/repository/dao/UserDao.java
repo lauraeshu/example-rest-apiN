@@ -1,4 +1,4 @@
-package co.edu.unisabana.usuario.repository;
+package co.edu.unisabana.usuario.repository.dao;
 
 import co.edu.unisabana.usuario.service.model.User;
 import co.edu.unisabana.usuario.service.user.port.RegisterUserPort;
