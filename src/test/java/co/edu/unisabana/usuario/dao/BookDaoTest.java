@@ -84,18 +84,23 @@ public class BookDaoTest {
         Book book6 = new Book("El retrato de Dorian Grey",1890,
             "Oscar Wilde", false,categoryBook);
 
+        Book book7 = new Book("Miguelito el más bonito",2003,
+            "Giovanni Hernandez", false,categoryBook);
+
+
         bookDao.registerBook(book1);
         bookDao.registerBook(book2);
         bookDao.registerBook(book3);
         bookDao.registerBook(book4);
         bookDao.registerBook(book5);
         bookDao.registerBook(book6);
+        bookDao.registerBook(book7);
 
-        int sizeArray = bookDao.listBooks.size();
+        int sizeArray = BookDao.listBooks.size();
         System.out.println(sizeArray);
 
-        assertEquals(6,sizeArray);
-        
+        assertTrue(bookDao.quantityOfBooks(sizeArray));
+
 
 }
 
