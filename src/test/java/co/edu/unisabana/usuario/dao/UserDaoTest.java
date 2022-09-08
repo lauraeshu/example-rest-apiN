@@ -18,4 +18,5 @@ public class UserDaoTest {
         User user = new User();
         assertEquals(1, BookDao.listBooks.size());
     }
+
 }

@@ -6,6 +6,8 @@ import co.edu.unisabana.usuario.service.library.model.Book;
 import co.edu.unisabana.usuario.service.library.model.CategoryBook;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,4 +61,44 @@ public class BookDaoTest {
         List books = bookDao.searchCategoryBook("suave");
         assertEquals(1, books.size());
     }
+@Test
+    public void Given_Register_Book_When_BookDao_Then_Return_Quantity_Books(){
+
+        CategoryBook categoryBook = CategoryBook.fromString("suave");
+
+        Book book1 = new Book("El coronel no tiene quien le escriba",1961,
+                "Gabriel García Márquez", false,categoryBook);
+
+        Book book2 = new Book("100 años de soledad",1967,
+            "Gabriel García Márquez", false,categoryBook);
+
+        Book book3 = new Book("Cumbres borrascosas",1847,
+            "Emily Brontë", false,categoryBook);
+
+        Book book4 = new Book("Orgullo y prejuicio",1813,
+            "Jane Austen", false,categoryBook);
+
+        Book book5 = new Book("Don Quijote de la Mancha",1605,
+            "Miguel de Cervantes", false,categoryBook);
+
+        Book book6 = new Book("El retrato de Dorian Grey",1890,
+            "Oscar Wilde", false,categoryBook);
+
+        bookDao.registerBook(book1);
+        bookDao.registerBook(book2);
+        bookDao.registerBook(book3);
+        bookDao.registerBook(book4);
+        bookDao.registerBook(book5);
+        bookDao.registerBook(book6);
+
+        int sizeArray = bookDao.listBooks.size();
+        System.out.println(sizeArray);
+
+        assertEquals(6,sizeArray);
+        
+
+}
+
+
+
 }
