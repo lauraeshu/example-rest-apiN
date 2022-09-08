@@ -59,4 +59,26 @@ public class BookDaoTest {
         List books = bookDao.searchCategoryBook("suave");
         assertEquals(1, books.size());
     }
+
+    @Test
+    public void Given_Authors_Name_When_BookDao_Then_Return_Authors_Books() {
+        CategoryBook categoryBook = CategoryBook.fromString("suave");
+
+        Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
+                false, categoryBook);
+
+        Book book2 = new Book("El amor en tiempor de cólera", 1985, "Gabriel García Márquez",
+                false, categoryBook);
+
+        Book book3 = new Book("Once minutos", 2003, "Paulo Coelho",
+                false, categoryBook);
+
+        bookDao.registerBook(book);
+        bookDao.registerBook(book2);
+        bookDao.registerBook(book3);
+
+        List books = bookDao.searchAuthorsBooks("Gabriel García Márquez");
+
+        assertEquals(2, books.size());
+    }
 }

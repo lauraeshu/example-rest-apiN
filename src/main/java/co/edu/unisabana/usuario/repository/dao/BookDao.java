@@ -2,9 +2,8 @@ package co.edu.unisabana.usuario.repository.dao;
 
 import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
-import co.edu.unisabana.usuario.service.library.port.AddBookPort;
-import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
-import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
+import co.edu.unisabana.usuario.service.library.model.CategoryBook;
+import co.edu.unisabana.usuario.service.library.port.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,9 +11,9 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Repository
-public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
+public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort, SearchCategoryBookPort, SearchAuthorsBooksPort {
 
-    static List<BookEntity> listBooks = new ArrayList<>();
+    public static List<BookEntity> listBooks = new ArrayList<>();
 
     @Override
     public boolean validateExistsBook(String nameBook) {
@@ -26,7 +25,6 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
         });
         return exists.get();
     }
-
 
     @Override
     public void registerBook(Book newBook) {
@@ -44,5 +42,29 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
             }
         }
         throw new IllegalArgumentException("No existe libre para actualizar");
+    }
+
+    @Override
+    public List searchCategoryBook(String bookCategory) {
+        List<BookEntity> listCategoryBook = new ArrayList<>();
+        CategoryBook categoryBook = CategoryBook.fromString(bookCategory);
+        listBooks.forEach(book -> {
+            if (book.getCategory().equals(categoryBook.name())) {
+                listCategoryBook.add(book);
+            }
+        });
+        return listCategoryBook;
+    }
+
+    @Override
+    public List searchAuthorsBooks(String authorsBooks) {
+        List<BookEntity> listFromAuthor = new ArrayList<>();
+        listBooks.forEach(book -> {
+            if (book.getAuthor().equals(authorsBooks)) {
+                listFromAuthor.add(book);
+            }
+        });
+
+        return listFromAuthor;
     }
 }
