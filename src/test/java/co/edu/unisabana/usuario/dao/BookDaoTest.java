@@ -17,7 +17,7 @@ public class BookDaoTest {
     private BookDao bookDao = new BookDao();
 
     @Test
-    public void Given_Register_book_When_BookDao_Then_Increase_array_size() {
+    public void Given_Register_book_When_BookDao_Then_Succesful() {
         CategoryBook categoryBook = CategoryBook.fromString("suave");
         Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
                 false, categoryBook);
@@ -53,7 +53,7 @@ public class BookDaoTest {
     }
 
     @Test
-    public void Given_Search_book_category_When_BookDao_Then_Return_Category_books() {
+    public void Given_Search_book_category_When_BookDao_Then_Succesful() {
         CategoryBook categoryBook = CategoryBook.fromString("suave");
         Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
                 false, categoryBook);
@@ -61,32 +61,31 @@ public class BookDaoTest {
         List books = bookDao.searchCategoryBook("suave");
         assertEquals(1, books.size());
     }
-@Test
-    public void Given_Register_Book_When_BookDao_Then_Return_Quantity_Books(){
 
+    @Test
+    public void Given_Register_Book_When_BookDao_Then_Return_Quantity_Books() {
         CategoryBook categoryBook = CategoryBook.fromString("suave");
 
-        Book book1 = new Book("El coronel no tiene quien le escriba",1961,
-                "Gabriel García Márquez", false,categoryBook);
+        Book book1 = new Book("El coronel no tiene quien le escriba", 1961,
+                "Gabriel García Márquez", false, categoryBook);
 
-        Book book2 = new Book("100 años de soledad",1967,
-            "Gabriel García Márquez", false,categoryBook);
+        Book book2 = new Book("100 años de soledad", 1967,
+                "Gabriel García Márquez", false, categoryBook);
 
-        Book book3 = new Book("Cumbres borrascosas",1847,
-            "Emily Brontë", false,categoryBook);
+        Book book3 = new Book("Cumbres borrascosas", 1847,
+                "Emily Brontë", false, categoryBook);
 
-        Book book4 = new Book("Orgullo y prejuicio",1813,
-            "Jane Austen", false,categoryBook);
+        Book book4 = new Book("Orgullo y prejuicio", 1813,
+                "Jane Austen", false, categoryBook);
 
-        Book book5 = new Book("Don Quijote de la Mancha",1605,
-            "Miguel de Cervantes", false,categoryBook);
+        Book book5 = new Book("Don Quijote de la Mancha", 1605,
+                "Miguel de Cervantes", false, categoryBook);
 
-        Book book6 = new Book("El retrato de Dorian Grey",1890,
-            "Oscar Wilde", false,categoryBook);
+        Book book6 = new Book("El retrato de Dorian Grey", 1890,
+                "Oscar Wilde", false, categoryBook);
 
-        Book book7 = new Book("Miguelito el más bonito",2003,
-            "Giovanni Hernandez", false,categoryBook);
-
+        Book book7 = new Book("Miguelito el más bonito", 2003,
+                "Giovanni Hernandez", false, categoryBook);
 
         bookDao.registerBook(book1);
         bookDao.registerBook(book2);
@@ -97,13 +96,30 @@ public class BookDaoTest {
         bookDao.registerBook(book7);
 
         int sizeArray = BookDao.listBooks.size();
-        System.out.println(sizeArray);
 
         assertTrue(bookDao.quantityOfBooks(sizeArray));
 
+    }
 
-}
+    @Test
+    public void Given_Authors_Name_When_BookDao_Then_Return_Authors_Books() {
+        CategoryBook categoryBook = CategoryBook.fromString("suave");
 
+        Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
+                false, categoryBook);
 
+        Book book2 = new Book("El amor en tiempos de cólera", 1985, "Gabriel García Márquez",
+                false, categoryBook);
 
+        Book book3 = new Book("Once minutos", 2003, "Paulo Coelho",
+                false, categoryBook);
+
+        bookDao.registerBook(book);
+        bookDao.registerBook(book2);
+        bookDao.registerBook(book3);
+
+        List books = bookDao.searchAuthorsBooks("Gabriel García Márquez");
+
+        assertEquals(2, books.size());
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @Repository
-public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort, SearchBookCategoryPort, QuantityOfBooksPort {
+public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort, SearchBookCategoryPort, QuantityOfBooksPort, SearchAuthorsBooksPort {
 
     public static List<BookEntity> listBooks = new ArrayList<>();
 
@@ -57,9 +57,21 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort, S
     }
     @Override
     public boolean quantityOfBooks(int size) {
-        if(listBooks.size()>7){
+        if(listBooks.size() > 7) {
             return false;
-        }else {return true;}
+        } else {
+            return true;
+        }
     }
 
+    @Override
+    public List searchAuthorsBooks(String authorsBooks) {
+        List<BookEntity> listFromAuthor = new ArrayList<>();
+        listBooks.forEach(book -> {
+            if (book.getAuthor().equals(authorsBooks)) {
+                listFromAuthor.add(book);
+            }
+        });
+        return listFromAuthor;
+    }
 }

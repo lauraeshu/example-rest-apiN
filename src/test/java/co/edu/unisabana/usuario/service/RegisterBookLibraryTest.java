@@ -5,9 +5,8 @@ import co.edu.unisabana.usuario.service.library.model.Book;
 import co.edu.unisabana.usuario.service.library.model.CategoryBook;
 import co.edu.unisabana.usuario.service.library.port.AddBookPort;
 import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
-import co.edu.unisabana.usuario.service.user.RegisterUserService;
 import co.edu.unisabana.usuario.service.user.port.RegisterBookLibraryPort;
-import co.edu.unisabana.usuario.service.user.port.RegisterUserPort;
+import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,36 +17,40 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-
-public class RegisterBookLibraryTest{
+public class RegisterBookLibraryTest {
 
     @InjectMocks
     private RegisterBookLibrary service;
+    @Mock
+    private SearchBookPort searchBookPort;
+
+    @Mock
+    private AddBookPort addBookPort;
+
+    @Mock
+    private RegisterBookPort registerBookPort;
 
     @Mock
     private RegisterBookLibraryPort registerBookLibraryPort;
-    @Mock
-    private SearchBookPort searchBookPort;
-    @Mock
-    private AddBookPort addBookPort;
+
 
     @Test
     public void Given_Book_Exist_When_RegisterBookLibrary_Then_Return_1(){
         CategoryBook categoryBook = CategoryBook.fromString("suave");
         Book book = new Book("100 años de soledad",1968,
                 "Gabriel Garcia Marquez",false,categoryBook);
-
         Mockito.when(searchBookPort.validateExistsBook(book.getName())).thenReturn(true);
         int result = service.registerBook(book);
-        assertEquals(1,result);
+        assertEquals(1, result);
 
     }
+
     @Test
     public void Given_Book_Does_Not_Exist_When_RegisterBookLibrary_Then_Return_2() {
-
-
+        Book book = new Book("", 1001, "Yo", false, null);
+        Mockito.when(searchBookPort.validateExistsBook("")).thenReturn(false);
+        int result = service.registerBook(book);
+        assertEquals(2, result);
     }
-
-
 
 }
