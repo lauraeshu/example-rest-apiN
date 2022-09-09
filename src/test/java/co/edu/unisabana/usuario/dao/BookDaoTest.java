@@ -67,7 +67,7 @@ public class BookDaoTest {
         Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
                 false, categoryBook);
 
-        Book book2 = new Book("El amor en tiempor de cólera", 1985, "Gabriel García Márquez",
+        Book book2 = new Book("El amor en tiempos de cólera", 1985, "Gabriel García Márquez",
                 false, categoryBook);
 
         Book book3 = new Book("Once minutos", 2003, "Paulo Coelho",

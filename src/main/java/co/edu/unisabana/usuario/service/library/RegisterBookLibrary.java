@@ -30,6 +30,4 @@ public class RegisterBookLibrary {
             return 2;
         }
     }
-
-
 }
