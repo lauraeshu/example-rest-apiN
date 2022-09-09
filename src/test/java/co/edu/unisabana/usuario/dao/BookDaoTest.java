@@ -121,5 +121,6 @@ public class BookDaoTest {
         List books = bookDao.searchAuthorsBooks("Gabriel García Márquez");
 
         assertEquals(2, books.size());
+        
     }
 }
