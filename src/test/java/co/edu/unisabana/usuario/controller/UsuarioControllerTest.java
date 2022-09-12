@@ -1,8 +1,8 @@
 package co.edu.unisabana.usuario.controller;
 
 import co.edu.unisabana.usuario.AbstractTest;
-import co.edu.unisabana.usuario.dto.UserDTO;
-import co.edu.unisabana.usuario.dto.UserDTOResponse;
+import co.edu.unisabana.usuario.a_presentation.dto.UserDTO;
+import co.edu.unisabana.usuario.a_presentation.dto.UserDTOResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;

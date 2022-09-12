@@ -1,13 +1,10 @@
 package co.edu.unisabana.usuario.dao;
 
-import co.edu.unisabana.usuario.repository.dao.BookDao;
-import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
-import co.edu.unisabana.usuario.service.library.model.Book;
-import co.edu.unisabana.usuario.service.library.model.CategoryBook;
+import co.edu.unisabana.usuario.d_persistence.dao.BookDao;
+import co.edu.unisabana.usuario.c_logic.library.model.Book;
+import co.edu.unisabana.usuario.c_logic.library.model.CategoryBook;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;

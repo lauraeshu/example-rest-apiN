@@ -1,10 +1,8 @@
 package co.edu.unisabana.usuario.dao;
 
-import co.edu.unisabana.usuario.repository.dao.BookDao;
-import co.edu.unisabana.usuario.repository.dao.UserDao;
-import co.edu.unisabana.usuario.service.library.model.Book;
-import co.edu.unisabana.usuario.service.library.model.CategoryBook;
-import co.edu.unisabana.usuario.service.model.User;
+import co.edu.unisabana.usuario.d_persistence.dao.BookDao;
+import co.edu.unisabana.usuario.d_persistence.dao.UserDao;
+import co.edu.unisabana.usuario.c_logic.model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
