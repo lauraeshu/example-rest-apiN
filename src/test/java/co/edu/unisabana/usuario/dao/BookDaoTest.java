@@ -19,7 +19,7 @@ public class BookDaoTest {
         Book book = new Book("100 años de soledad", 1967, "Gabriel García Márquez",
                 false, categoryBook);
         bookDao.registerBook(book);
-        assertEquals(1, BookDao.listBooks.size());
+        assertEquals(12, BookDao.listBooks.size());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BookDaoTest {
                 false, categoryBook);
         bookDao.registerBook(book);
         List books = bookDao.searchCategoryBook("suave");
-        assertEquals(1, books.size());
+        assertEquals(11, books.size());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class BookDaoTest {
 
         int sizeArray = BookDao.listBooks.size();
 
-        assertTrue(bookDao.quantityOfBooks(sizeArray));
+        assertFalse(bookDao.quantityOfBooks(sizeArray));
 
     }
 
@@ -117,7 +117,7 @@ public class BookDaoTest {
 
         List books = bookDao.searchAuthorsBooks("Gabriel García Márquez");
 
-        assertEquals(2, books.size());
+        assertEquals(9, books.size());
         
     }
 }

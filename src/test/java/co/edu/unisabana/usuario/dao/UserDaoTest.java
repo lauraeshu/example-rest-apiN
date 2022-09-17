@@ -6,15 +6,16 @@ import co.edu.unisabana.usuario.c_logic.model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class UserDaoTest {
 
     private UserDao userDao = new UserDao();
 
     @Test
-    public void Given_Register_book_When_BookDao_Then_Increase_array_size() {
+    public void Given_Add_user_When_UserDao_Then_Return_false() {
         User user = new User();
-        assertEquals(1, BookDao.listBooks.size());
+        assertFalse(userDao.addNewUser(user));
     }
 
 }

@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.2'
 	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 	id 'java'
+	id 'jacoco'
 }
 
 group = 'co.edu.unisabana'
@@ -25,4 +26,17 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+jacoco {
+	toolVersion = "0.8.5"
+	reportsDir = file("$buildDir/jacoco")
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+	dependsOn test
 }
